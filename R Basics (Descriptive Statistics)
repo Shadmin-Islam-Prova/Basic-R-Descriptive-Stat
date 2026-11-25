@@ -1,0 +1,45 @@
+rm(list=ls())   # to clean the memory 
+
+# to declare a variable age
+
+age<-c(12,24,35,43,34,40)
+
+
+
+length(age)  # to find the number of obs 
+age[1]  # to see the first value in age 
+sum(age) # to find the total  age
+mean(age) # mean of age 
+mean(age, na.rm=TRUE)
+var(age) # variance of age
+var(age, na.rm=T)
+sd(age) # standard deviation of age
+median(age) # median of age 
+summary(age)
+min(age)
+max(age)
+
+
+aa<-c(sum(age),mean(age), var(age),max(age))
+aa
+
+
+
+is.vector(age)  # to check if age is a vector
+
+age2<-c(23,34,54,NA,NA)
+sum(is.na(age))  # to find the no. of missing values 
+sum(is.na(age2))  
+
+# replicate number 
+rep(1, times=6)
+rep(c(1,5), times=6)
+rep(c(1,5), each=6)
+rep(c(1,5),c(4,6))
+rep(20:22, each=6)
+rep(c(1,5), each=4,length=6)
+age2<-rep(age[2:5], times=2)
+x<-seq(1,20,2)
+y<-2*x+5
+
+aq=airquality
