@@ -1,0 +1,40 @@
+rm(list = ls())
+
+n <- 20
+
+sex        <- c(Female = 10, Male = 10)
+education  <- c("No formal education" = 12, "Primary" = 3,
+                "Secondary" = 4, "Graduate or higher" = 1)
+impact     <- c(Average = 14, Significant = 6)
+satisfaction <- c(Average = 16, Satisfied = 4)
+occupation <- c(Other = 7, Small_business = 3, Unemployed = 4,
+                Farmer = 2, Fisherman = 2, Daily_wage = 3)
+
+# Helper: count and percent table
+make_table <- function(counts, n = sum(counts)) {
+  data.frame(category = names(counts),
+             count = as.integer(counts),
+             percent = round(100 * as.integer(counts) / n, 1))
+}
+
+tab_sex    <- make_table(sex, n_valid)
+tab_edu    <- make_table(education, n_valid)
+tab_impact <- make_table(impact, n_valid)
+tab_sat    <- make_table(satisfaction, n_valid)
+tab_occ    <- make_table(occupation, n_valid)
+
+print(tab_sex)
+print(tab_edu)
+print(tab_impact)
+print(tab_sat)
+print(tab_occ)
+
+
+# Plot: perceived impact on health and hygiene
+png("impact_barplot.png", width = 800, height = 500)
+bp2 <- barplot(tab_impact$percent, names.arg = tab_impact$category,
+               col = "darkseagreen", ylim = c(0, 100),
+               main = "Perceived impact of WASH interventions (n = 20)",
+               ylab = "Percent of respondents")
+text(bp2, tab_impact$percent + 4, labels = paste0(tab_impact$percent, "%"))
+dev.off()
